@@ -1,4 +1,4 @@
-enum CountCells {
+enum Profile: CaseIterable {
     case imageAvatar
     case shortData
     
@@ -21,3 +21,5 @@ enum Links {
         }
     }
 }
+
+
