@@ -21,6 +21,25 @@ final class CollectionViewController: UICollectionViewController {
         
         return cell
     }
-
-    // MARK: UICollectionViewDelegate
 }
+
+
+
+// MARK: UICollectionViewDelegate
+extension CollectionViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        CGSize(width: UIScreen.main.bounds.width - 50, height: 100)
+    }
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let tappedButton = countProfiles[indexPath.item]
+        switch tappedButton {
+        case .imageAvatar:
+            return print("Image Avatar")
+        case .shortData:
+            return print("Short Data")
+        }
+    }
+}
+
+
+
