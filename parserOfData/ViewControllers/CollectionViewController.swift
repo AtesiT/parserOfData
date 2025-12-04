@@ -37,9 +37,31 @@ extension CollectionViewController: UICollectionViewDelegateFlowLayout {
             return print("Image Avatar")
         case .shortData:
             return print("Short Data")
+        case .smth:
+            checkJSON()
+            print("Check output")
+            return
         }
     }
 }
 
 
 
+//  MARK: - Create func to check JSON
+extension CollectionViewController {
+    private func checkJSON() {
+        URLSession.shared.dataTask(with: Links.shortDataUrl.url) { [weak self] data, _, error in
+            guard let self else {return}
+            guard let data else {
+                print(error?.localizedDescription ?? "")
+                return
+            }
+            do {
+                let jsonData = try JSONDecoder().decode(dataJSON.self, from: data)
+                print(jsonData)
+            } catch {
+                
+            }
+        }.resume()
+    }
+}
