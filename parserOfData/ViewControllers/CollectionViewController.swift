@@ -57,10 +57,11 @@ extension CollectionViewController {
                 return
             }
             do {
-                let jsonData = try JSONDecoder().decode(dataJSON.self, from: data)
+                let jsonData = try JSONDecoder().decode([dataJSON].self, from: data)
                 print(jsonData)
             } catch {
-                
+                print(error)
+                print("Parsing it's not working")
             }
         }.resume()
     }
